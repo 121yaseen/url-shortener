@@ -2,6 +2,7 @@
 import express from 'express'
 import userRoute from './routes/users'
 import urlRoute from './routes/urls'
+import { connect } from './db/connection'
 
 const app = express()
 
@@ -12,6 +13,11 @@ app.get('/', (req, res) => {
   res.send('Server Running!')
 })
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000')
-})
+async function start () {
+  await connect()
+  app.listen(3000, () => {
+    console.log('Server running on port 3000')
+  })
+}
+
+start()
