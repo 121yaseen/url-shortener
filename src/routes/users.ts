@@ -1,17 +1,17 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const route = Router();
+const route = Router()
 
-route.get("/", (req, res) => {
-  res.send("GET /users");
-});
+route.get('/', (req, res) => {
+  res.send('GET /users')
+})
 
-route.post("/", (req, res) => {
+route.post('/', (req, res) => {
   // TEMP register user
-});
+})
 
-route.post("/login", (req, res) => {
+route.post('/login', (req, res) => {
   // TEMP login user
-});
+})
 
-export default route;
+export default route
