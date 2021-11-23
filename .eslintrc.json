@@ -1,26 +1,19 @@
 {
     "env": {
-        "es2021": true,
-        "node": true
+        "browser": true,
+        "es2021": true
     },
     "extends": [
         "standard"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 2020,
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "plugins": [
         "@typescript-eslint"
     ],
-    "ignorePatterns": [
-        "dist/**/*"
-    ],
     "rules": {
-        "comma-dangle": [
-            "error",
-            "always-multiline"
-        ]
     }
 }
