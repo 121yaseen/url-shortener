@@ -6,7 +6,7 @@ import { connect } from './db/connection'
 
 const app = express()
 
-// parses incoming requests with JSON payloads 
+// parses incoming requests with JSON payloads
 // and makes the request body available on req.body
 app.use(express.json())
 

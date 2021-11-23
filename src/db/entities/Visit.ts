@@ -5,13 +5,13 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from "typeorm";
-import Url from "./Url";
+  UpdateDateColumn
+} from 'typeorm'
+import Url from './Url'
 
-@Entity({ name: "visits" })
+@Entity({ name: 'visits' })
 export default class Visit extends BaseEntity {
-  @PrimaryGeneratedColumn("increment", { type: "bigint" })
+  @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   public id!: number;
 
   @ManyToOne((type) => Url)
@@ -20,12 +20,12 @@ export default class Visit extends BaseEntity {
   @Column()
   public referrer!: string;
 
-  @Column({ length: "15" })
+  @Column({ length: '15' })
   public ip!: string;
 
-  @CreateDateColumn({ name: "created_at" })
+  @CreateDateColumn({ name: 'created_at' })
   public createdAt: Date = new Date();
 
-  @UpdateDateColumn({ name: "updated_at" })
+  @UpdateDateColumn({ name: 'updated_at' })
   public updatedAt: Date = new Date();
 }

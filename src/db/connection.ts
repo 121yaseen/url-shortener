@@ -15,7 +15,7 @@ export const connect = async () => {
       Visit
     ],
     synchronize: true,
-    logging: true,
+    logging: true
   })
   return connection
 }
