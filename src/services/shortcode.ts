@@ -25,3 +25,7 @@ export function getRandomShortCode () {
   const shortCode = intToRadix64(id)
   return ({ id, shortCode })
 }
+
+export function getUrlIdFromShortCode (shortCode: string): number {
+  return radix64ToInt(shortCode)
+}

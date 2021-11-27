@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  getConnection,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
@@ -17,7 +18,7 @@ export default class Visit extends BaseEntity {
   @ManyToOne((type) => Url)
   public url!: Url;
 
-  @Column()
+  @Column({ nullable: true })
   public referrer!: string;
 
   @Column({ length: '15' })
@@ -29,3 +30,6 @@ export default class Visit extends BaseEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   public updatedAt: Date = new Date();
 }
+
+export const getVisitRepository = () =>
+  getConnection().getRepository<Visit>(Visit)
