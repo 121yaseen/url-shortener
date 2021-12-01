@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createShortUrl, getUrl } from '../controllers/urls'
+import { createShortUrl, createUrlFromShortCode, getUrl } from '../controllers/urls'
 import { registerVisit } from '../controllers/visits'
 
 const route = Router()
@@ -9,9 +9,14 @@ route.get('/', (req, res) => {
 })
 
 route.post('/', async (req, res) => {
-  const { longUrl } = req.body
-  const url = await createShortUrl(longUrl)
-  res.send(url)
+  const { longUrl, shortCode } = req.body
+  if (shortCode) {
+    const url = await createUrlFromShortCode(longUrl, shortCode.slice(0, 8))
+    res.send(url)
+  } else {
+    const url = await createShortUrl(longUrl)
+    res.send(url)
+  }
 })
 
 // FIXME : change this route from /urls/:shortCode to /:shortCode
@@ -22,8 +27,10 @@ route.get('/:shortCode', async (req, res) => {
   const url = await getUrl(shortCode)
   if (url.longUrl) {
     await registerVisit(url, ip, referrer)
+    res.redirect(url.longUrl)
+  } else {
+    res.status(404).send('Not found')
   }
-  res.redirect(url.longUrl)
 })
 
 export default route

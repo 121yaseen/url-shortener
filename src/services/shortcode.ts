@@ -29,3 +29,7 @@ export function getRandomShortCode () {
 export function getUrlIdFromShortCode (shortCode: string): number {
   return radix64ToInt(shortCode)
 }
+
+export function getRandomId () {
+  return Math.floor(Math.random() * Math.pow(2, 48))
+}
