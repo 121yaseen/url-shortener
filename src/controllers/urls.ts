@@ -23,3 +23,8 @@ export async function getUrl (shortCode: string) : Promise<Url> {
   const url = await getUrlRepository().findOne(urlId)
   return url || new Url()
 }
+
+export async function getUrls () : Promise<Url[]> {
+  const urls = await getUrlRepository().find()
+  return urls || []
+}

@@ -1,11 +1,13 @@
 import { Router } from 'express'
-import { createShortUrl, createUrlFromShortCode, getUrl } from '../controllers/urls'
+import { createShortUrl, createUrlFromShortCode, getUrl, getUrls } from '../controllers/urls'
 import { registerVisit } from '../controllers/visits'
+import Url from '../db/entities/Url'
 
 const route = Router()
 
-route.get('/', (req, res) => {
-  res.send('GET /urls')
+route.get('/', async (req, res) => {
+  const urls: Url[] = await getUrls()
+  res.send(urls)
 })
 
 route.post('/', async (req, res) => {
