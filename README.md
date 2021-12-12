@@ -8,7 +8,7 @@
 
 <hr>
 
-`GET` `users/` : Extract username from body and create user
+`POST` `users/` : Extract username from body and create user
 
 <hr>
 
